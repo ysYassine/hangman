@@ -93,12 +93,61 @@ type HangmanDrawingProps = {
   numberOfGuesses: number;
 };
 
+type RedCrossProps = {
+  top: string;
+  right: string;
+};
+
+function RedCross({ top, right }: RedCrossProps) {
+  return (
+    <div
+      style={{
+        position: "absolute",
+        top: top,
+        right: right,
+      }}
+    >
+      <div
+        style={{
+          position: "relative",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            height: "15px",
+            width: "3px",
+            backgroundColor: "red",
+            rotate: "45deg",
+          }}
+        ></div>
+        <div
+          style={{
+            position: "absolute",
+            height: "15px",
+            width: "3px",
+            backgroundColor: "red",
+            rotate: "-45deg",
+          }}
+        ></div>
+      </div>
+    </div>
+  );
+}
+
 export default function HangmanDrawing({
   numberOfGuesses,
 }: HangmanDrawingProps) {
   return (
-    <div style={{ position: "relative" }}>
+    <div style={{ position: "relative", margin: "12px" }}>
       {BODY_PARTS.slice(0, numberOfGuesses)}
+      {numberOfGuesses > BODY_PARTS.length && (
+        <>
+          <RedCross top="73px" right="-4px" />
+          <RedCross top="73px" right="17px" />
+        </>
+      )}
+
       <div
         style={{
           position: "absolute",
@@ -111,15 +160,26 @@ export default function HangmanDrawing({
       ></div>
       <div
         style={{
+          position: "absolute",
+          height: "60px",
+          width: DRAWING_WIDTH,
+          backgroundColor: "black",
+          left: "140px",
+          top: "-5px",
+          rotate: "45deg",
+        }}
+      ></div>
+      <div
+        style={{
           height: DRAWING_WIDTH,
-          width: "200px",
+          width: "150px",
           backgroundColor: "black",
           marginLeft: "120px",
         }}
       ></div>
       <div
         style={{
-          height: "400px",
+          height: "320px",
           width: DRAWING_WIDTH,
           backgroundColor: "black",
           marginLeft: "120px",
@@ -128,7 +188,7 @@ export default function HangmanDrawing({
       <div
         style={{
           height: DRAWING_WIDTH,
-          width: "250px",
+          width: "280px",
           backgroundColor: "black",
         }}
       ></div>

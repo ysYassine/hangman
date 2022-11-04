@@ -76,9 +76,12 @@ function App() {
         alignItems: "center",
       }}
     >
-      <div style={{ fontSize: "2rem", textAlign: "center" }}>
-        {isWinner && "You are free to go 😫"}
-        {isLoser && "You are dead 😃"}
+      <div style={{ fontSize: "1.5rem", textAlign: "center" }}>
+        {isWinner && "You are free to go 👻"}
+        {isLoser && "You are dead 💀"}
+        {!isWinner && !isLoser && (
+          <div style={{ color: "transparent", userSelect: "none" }}>💀</div>
+        )}
       </div>
       <HangmanDrawing numberOfGuesses={incorrectLetters.length} />
       <HangmanWord

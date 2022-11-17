@@ -2,7 +2,7 @@
   "name": "hangman",
   "private": true,
   "version": "0.1.0",
-  "homepage": "https://ysyassine.github.io/hangman/",
+  "homepage": "https://ysyassine.github.io/hangman",
   "type": "module",
   "scripts": {
     "dev": "vite",

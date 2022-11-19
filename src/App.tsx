@@ -64,7 +64,6 @@ function App() {
       document.removeEventListener("keypress", handler);
     };
   }, []);
-  console.log(wordToGuess);
   return (
     <div
       style={{

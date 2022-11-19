@@ -1,6 +1,6 @@
 # Hangman Game
 
-In this project, I used `React` <img src="./public/react.png" alt="wrong letter" width="15"/> and `Typescript` <img src="./public/typescript.png" alt="wrong letter" width="15"/> to create a Hangman game.
+In this project, I used `React` <img src="./public/react.png" alt="react icon" width="15"/> and `Typescript` <img src="./public/typescript.png" alt="typescript icon" width="15"/> to create a Hangman game.
 
 ## Live Demo
 

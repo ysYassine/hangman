@@ -1,12 +1,13 @@
 const DRAWING_WIDTH = "10px";
 
-const HEAD = (
+const HEAD = () => (
   <div
+    key="HEAD"
     style={{
       position: "absolute",
       height: "50px",
       width: "50px",
-      border: "10px solid black",
+      border: "10px solid white",
       borderRadius: "100%",
       right: "-30px",
       top: "50px",
@@ -14,73 +15,80 @@ const HEAD = (
   ></div>
 );
 
-const BODY = (
+const BODY = () => (
   <div
+    key="BODY"
     style={{
       position: "absolute",
       height: "100px",
       width: DRAWING_WIDTH,
-      backgroundColor: "black",
+      backgroundColor: "white",
       right: "0",
       top: "120px",
     }}
   ></div>
 );
 
-const RIGHT_ARM = (
+const RIGHT_ARM = (isLoser: boolean) => (
   <div
+    key="RIGHT_ARM"
     style={{
       position: "absolute",
       height: DRAWING_WIDTH,
-      width: "100px",
-      transform: "rotate(-30deg)",
-      transformOrigin: "left bottom",
-      backgroundColor: "black",
-      right: "-100px",
-      top: "150px",
+      width: "90px",
+      transform: isLoser ? "rotate(50deg)" : "rotate(-30deg)",
+      transformOrigin: "left center",
+      backgroundColor: "white",
+      right: "-85px",
+      top: "140px",
+      transition: "transform 0.3s",
     }}
   ></div>
 );
 
-const LEFT_ARM = (
+const LEFT_ARM = (isLoser: boolean) => (
   <div
+    key="LEFT_ARM"
     style={{
       position: "absolute",
       height: DRAWING_WIDTH,
-      width: "100px",
-      transform: "rotate(30deg)",
-      transformOrigin: "right bottom",
-      backgroundColor: "black",
-      right: "10px",
-      top: "150px",
+      width: "90px",
+      transform: isLoser ? "rotate(-50deg)" : "rotate(30deg)",
+      transformOrigin: "right center",
+      backgroundColor: "white",
+      right: "5px",
+      top: "140px",
+      transition: "transform 0.3s",
     }}
   ></div>
 );
 
-const RIGHT_LEG = (
+const RIGHT_LEG = () => (
   <div
+    key="RIGHT_LEG"
     style={{
       position: "absolute",
       height: DRAWING_WIDTH,
       width: "100px",
       transform: "rotate(60deg)",
       transformOrigin: "left top",
-      backgroundColor: "black",
+      backgroundColor: "white",
       right: "-100px",
       top: "210px",
     }}
   ></div>
 );
 
-const LEFT_LEG = (
+const LEFT_LEG = () => (
   <div
+    key="LEFT_LEG"
     style={{
       position: "absolute",
       height: DRAWING_WIDTH,
       width: "100px",
       transform: "rotate(-60deg)",
       transformOrigin: "right top",
-      backgroundColor: "black",
+      backgroundColor: "white",
       right: "10px",
       top: "210px",
     }}
@@ -117,7 +125,7 @@ function RedCross({ top, right }: RedCrossProps) {
             position: "absolute",
             height: "15px",
             width: "3px",
-            backgroundColor: "red",
+            backgroundColor: "#B42B51",
             rotate: "45deg",
           }}
         ></div>
@@ -126,7 +134,7 @@ function RedCross({ top, right }: RedCrossProps) {
             position: "absolute",
             height: "15px",
             width: "3px",
-            backgroundColor: "red",
+            backgroundColor: "#B42B51",
             rotate: "-45deg",
           }}
         ></div>
@@ -138,9 +146,12 @@ function RedCross({ top, right }: RedCrossProps) {
 export default function HangmanDrawing({
   numberOfGuesses,
 }: HangmanDrawingProps) {
+  const isLoser = numberOfGuesses > BODY_PARTS.length;
   return (
     <div style={{ position: "relative", margin: "12px" }}>
-      {BODY_PARTS.slice(0, numberOfGuesses)}
+      {BODY_PARTS.slice(0, numberOfGuesses).map((element) => {
+        return element(isLoser);
+      })}
       {numberOfGuesses > BODY_PARTS.length && (
         <>
           <RedCross top="73px" right="-4px" />
@@ -153,7 +164,7 @@ export default function HangmanDrawing({
           position: "absolute",
           height: "50px",
           width: DRAWING_WIDTH,
-          backgroundColor: "black",
+          backgroundColor: "white",
           right: "0",
           top: "0",
         }}
@@ -163,7 +174,7 @@ export default function HangmanDrawing({
           position: "absolute",
           height: "60px",
           width: DRAWING_WIDTH,
-          backgroundColor: "black",
+          backgroundColor: "white",
           left: "140px",
           top: "-5px",
           rotate: "45deg",
@@ -173,7 +184,7 @@ export default function HangmanDrawing({
         style={{
           height: DRAWING_WIDTH,
           width: "150px",
-          backgroundColor: "black",
+          backgroundColor: "white",
           marginLeft: "120px",
         }}
       ></div>
@@ -181,7 +192,7 @@ export default function HangmanDrawing({
         style={{
           height: "320px",
           width: DRAWING_WIDTH,
-          backgroundColor: "black",
+          backgroundColor: "white",
           marginLeft: "120px",
         }}
       ></div>
@@ -189,7 +200,7 @@ export default function HangmanDrawing({
         style={{
           height: DRAWING_WIDTH,
           width: "280px",
-          backgroundColor: "black",
+          backgroundColor: "white",
         }}
       ></div>
     </div>

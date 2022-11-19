@@ -23,8 +23,9 @@ export default function HangmanWord({
       {wordToGuess.split("").map((letter, index) => (
         <span
           style={{
-            borderBottom: "0.1em solid black",
+            borderBottom: "0.1em solid white",
           }}
+          key={index}
         >
           <span
             style={{
@@ -33,7 +34,9 @@ export default function HangmanWord({
                   ? "visible"
                   : "hidden",
               color:
-                !guessedLetters.includes(letter) && reveal ? "red" : "black",
+                !guessedLetters.includes(letter) && reveal
+                  ? "#B42B51"
+                  : "white",
             }}
             key={index}
           >

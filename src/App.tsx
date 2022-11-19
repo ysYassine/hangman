@@ -64,7 +64,7 @@ function App() {
       document.removeEventListener("keypress", handler);
     };
   }, []);
-
+  console.log(wordToGuess);
   return (
     <div
       style={{
@@ -76,7 +76,7 @@ function App() {
         alignItems: "center",
       }}
     >
-      <div style={{ fontSize: "1.5rem", textAlign: "center" }}>
+      <div style={{ fontSize: "1.5rem", textAlign: "center", color: "white" }}>
         {isWinner && "You are free to go 👻"}
         {isLoser && "You are dead 💀"}
         {!isWinner && !isLoser && (

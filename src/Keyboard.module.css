@@ -1,17 +1,17 @@
 .btn {
   width: 100%;
   aspect-ratio: 1/1;
-  border: 3px solid black;
+  border: 3px solid white;
   background: none;
   font-size: 1.5rem;
   font-weight: bold;
   text-transform: uppercase;
-  color: black;
+  color: white;
   cursor: pointer;
 }
 
 .btn.active {
-  background-color: #0797d0;
+  background-color: #4e9f3d;
   color: white;
 }
 
@@ -21,5 +21,5 @@
 
 .btn:hover:not(:disabled),
 .btn:focus:not(:disabled) {
-  background-color: #10bafe;
+  background-color: #5c8fa1;
 }
